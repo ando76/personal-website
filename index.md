@@ -1,25 +1,24 @@
 ---
 layout: default
-title: Homepage 2
+title: NEIL ANDERSON
+subtitle: Digital
+description: Digital Consultant, specialist in leading the development of large-scale, modular HTML and CSS architectures for medium to large businesses and organisations. Available for hire now.
 ---
 
-A First Level Header - now got auto reload enabled!
-====================
+<!--- Neil Anderson Digital
+==================== -->
 
-A Second Level Header
+
+About me
 ---------------------
 
-Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.
+I'm a highly experienced and dependable consultant front-end digital designer/developer from the UK. 
 
-The quick brown fox jumped over the lazy
-dog's back.
+I enjoy delivering transformational change in customer experience and visual design for medium-to-large businesses and organisations. 
 
-### Header 3
+I'm also a specialist in helping refactor large, unwieldy HTML/CSS codebases. 
 
-> This is a blockquote.
-> 
-> This is the second paragraph in the blockquote.
->
-> ## This is an H2 in a blockquote
+<!---### Header 3-->
+
+[Contact me]({{ site.baseurl }}/contact-me.html)
+
