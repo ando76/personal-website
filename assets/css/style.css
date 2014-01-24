@@ -1,0 +1,1788 @@
+/*------------------------------------*\
+    $ROCKET-BOOSTER SCSS
+\*------------------------------------*/
+/**
+ * CONTENTS
+ * INTRODUCTION.........How the grid system works.
+ * VARIABLES............Your settings.
+ * MIXINS...............Library mixins.
+ * GRID SETUP...........Build the grid structure.
+ * WIDTHS...............Build our responsive widths around our breakpoints.
+ * PUSH.................Push classes.
+ * PULL.................Pull classes.
+ */
+/*------------------------------------*\
+    $INTRODUCTION
+\*------------------------------------*/
+/**
+ * Rocket-booster uses the guts of csswizardry grids but uses floats instead of 
+ * inline-block for it's structural layout. The grid provides you with widths 
+ * to suit a number of breakpoints designed around devices of a size you specify. 
+ * Out of the box, csswizardry grids caters to the following types of device:
+ *
+ * palm     --  palm-based devices, like phones and small tablets
+ * lap      --  lap-based devices, like iPads or laptops
+ * portable --  all of the above
+ * desk     --  stationary devices, like desktop computers
+ * regular  --  any/all types of device
+ *
+ * These namespaces are then used in the library to give you the ability to
+ * manipulate your layouts based around them, for example:
+ *
+   <div class="grid__item  one-whole  lap-one-half  desk-one-third">
+ *
+ * This would give you a grid item which is 100% width unless it is on a lap
+ * device, at which point it become 50% wide, or it is on a desktop device, at
+ * which point it becomes 33.333% width.
+ *
+ * csswizardry grids also has push and pull classes which allow you to nudge
+ * grid items left and right by a defined amount. These follow the same naming
+ * convention as above, but are prepended by either `push--` or `pull--`, for
+ * example:
+ *
+   `class="grid__item  one-half  push--one-half"`
+ *
+ * This would give you a grid item which is 50% width and pushed over to the
+ * right by 50%.
+ *
+ * All classes in csswizardry grids follow this pattern, so you should fairly
+ * quickly be able to piece together any combinations you can imagine, for
+ * example:
+ *
+   `class="grid__item  one-whole  lap-one-half  desk-one-third  push--desk-one-third"`
+ *
+   `class="grid__item  one-quarter  palm-one-half  push--palm-one-half"`
+ *
+   `class="grid__item  palm-one-third  desk-five-twelfths"`
+ */
+/*------------------------------------*\
+    $IMPORTS
+\*------------------------------------*/
+/**
+* Generic utilities etc.
+*/
+/*------------------------------------*\
+	$DEFAULTS
+\*------------------------------------*/
+/*------------------------------------*\
+    $FUNCTIONS
+\*------------------------------------*/
+/**
+ * Neil experiment - calculating pixels to ems
+ */
+/*------------------------------------*\
+	$FRAMEWORK VARIABLES
+\*------------------------------------*/
+/**
+ * If you are building a non-responsive site but would still like to use
+ * csswizardry-grids, set this to ‘false’:
+ */
+/**
+ * Is this build mobile first? Setting to ‘true’ means that all grids will be
+ * 100% width if you do not apply a more specific class to them.
+ */
+/**
+ * Set the spacing between your grid items.
+ */
+/* 16px */
+/**
+ * Would you like Sass’ silent classes, or regular CSS classes?
+ */
+/**
+ * Would you like push and pull classes enabled?
+ */
+/**
+ * Using `inline-block` means that the grid items need their whitespace removed
+ * in order for them to work correctly. Set the following to true if you are
+ * going to achieve this by manually removing/commenting out any whitespace in
+ * your HTML yourself.
+ *
+ * Setting this to false invokes a hack which cannot always be guaranteed,
+ * please see the following for more detail:
+ *
+ * github.com/csswizardry/csswizardry-grids/commit/744d4b23c9d2b77d605b5991e54a397df72e0688
+ * github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+ */
+/**
+ * Define your breakpoints. The first value is the prefix that shall be used for
+ * your classes (e.g. `.palm-one-half`), the second value is the media query
+ * that the breakpoint fires at.
+ */
+ /* Experiment... Base font 13px
+ 320px = 24.615em
+ 768px = 59.077em
+ 900px = 69.231em
+ 901px = 69.308em
+
+ 'palm' '(min-width: 24.615em)',
+
+ */
+/* Rather than relating to any device, these breakpoints are set based on where the design begins to look a bit broken */
+/**
+ * Define which namespaced breakpoints you would like to generate for each of
+ * widths, push and pull. This is handy if you only need pull on, say, desk, or
+ * you only need a new width breakpoint at mobile sizes. It allows you to only
+ * compile as much CSS as you need. All are turned on by default, but you can
+ * add and remove breakpoints at will.
+ *
+ * Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
+ * have been set to ‘true’.
+ */
+/**
+ * You do not need to edit anything from this line onward; csswizardry-grids is
+ * good to go. Happy griddin’!
+ */
+/*------------------------------------*\
+    $CUSTOM VARIABLES - NW
+\*------------------------------------*/
+/*------------------------------------*\
+    $TYPOGRAPHY
+\*------------------------------------*/
+/**
+ * 1. Existing live site has a base font of 13px so sticking with this for now. Browser default (~16px) is another recommended option.
+ * 2. Line-height unit-less as em and percentage values have poor inheritance behaviour 
+ */
+/* [1] */
+/* [2] 21px */
+/* [2] 16px e.g. Blurb within sub-nav tiles */
+/* [2] 14px e.g. headings */
+/* [2] 13px e.g. headings */
+/*------------------------------------*\
+    $COLOURS - need to work out how these compare with RBS colours - can we have primaries 1, 2, 3 etc - work out naming conventions etc
+\*------------------------------------*/
+/* Primary */
+/* Greyscale */
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/**
+ * Create vendor-prefixed CSS in one go, e.g.
+ *
+ * `@include vendor(border-radius, 4px);`
+ *
+ */
+/**
+ * These mixins are for the library to use only, you should not need to modify
+ * them at all.
+ *
+ * Enclose a block of code with a media query as named in `$breakpoints`.
+ */
+/**
+ * Drop relative positioning into silent classes which can’t take advantage of
+ * the '[class*="push--"]' and '[class*="pull--"]' selectors.
+ */
+/**
+* Core
+*/
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+/* Need to add in a proper reset / edited normalize */
+/* line 7, ../sass/_reset.scss */
+* {
+  margin: 0;
+  padding: 0;
+  *behavior: url(/rocket-booster/js/vendor/boxsizing.htc);
+  /* Move into IE7 css. An alternative boxsizing polyfill is to use Modernizr & JQuery */
+}
+/* line 12, ../sass/_reset.scss */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*-------------------------------------------
+    :: HTML5 display definitions
+--------------------------------------------*/
+/* ------ Corrects block display not defined in IE6/9/8/9 & FF3 ------ */
+/* line 23, ../sass/_reset.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+  display: block;
+}
+
+/* ------ Corrects inline-block display not defined in IE6/9/8/9 & FF3 ------ */
+/* line 26, ../sass/_reset.scss */
+audio, canvas, video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/* ------  Prevents modern browsers from displaying 'audio' without controls ------ */
+/* ------  Addresses styling for 'hidden' attribute not present in IE7/9/9, FF3, S4. Known issue: no IE6 support ------ */
+/* line 30, ../sass/_reset.scss */
+audio:not([controls]), [hidden] {
+  display: none;
+}
+
+/*-------------------------------------------
+    :: DEFAULTS
+--------------------------------------------*/
+/**
+* 1. Set default font size and set font family to sans-serif.
+* 2. Keeps page centred in all browsers regardless of content height.
+* 3. Prevent iOS text size adjust after orientation change, without disabling
+* user zoom.
+*/
+/* line 41, ../sass/_reset.scss */
+html {
+  font-size: 16px;
+  /* 1 */
+  font-family: sans-serif;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  /* 3 */
+  -ms-text-size-adjust: 100%;
+  /* 3 */
+}
+
+/* line 49, ../sass/_reset.scss */
+body {
+  font: 1em sans-serif;
+  font-family: sans-serif;
+  line-height: 1.615;
+  color: #111111;
+  background: #ededed;
+}
+
+/*-------------------------------------------
+    :: Links
+--------------------------------------------*/
+/* ------ Addresses outline displayed oddly in Chrome ------ */
+/* line 63, ../sass/_reset.scss */
+a:focus {
+  outline: thin dotted;
+}
+
+/* ------ Improves readability when focused and also mouse hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test ------ */
+/* line 66, ../sass/_reset.scss */
+a:hover, a:active {
+  outline: 0;
+}
+
+/*-------------------------------------------
+    :: Typography
+--------------------------------------------*/
+/* ------ Addresses styling not present in IE7/9/9, S5, Chrome ------ */
+/* line 72, ../sass/_reset.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/* ------ Addresses style set to 'bolder' in FF3/4, S4/5, Chrome ------ */
+/* line 75, ../sass/_reset.scss */
+b, strong, .bold {
+  font-weight: bold;
+}
+
+/* ------ Prevents sub and sup affecting line-height in all browsers: gist.github.com/413930 ------ */
+/* line 78, ../sass/_reset.scss */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 79, ../sass/_reset.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 80, ../sass/_reset.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/**
+ * 1. Temporarily set to justify to aid in highlighting the right edge of grid items
+ */
+/* line 85, ../sass/_reset.scss */
+p {
+  font-size: 16px;
+  font-size: 1em;
+  font-size: 1rem;
+  margin-bottom: 2.462em;
+  /* 32px */
+}
+
+/* line 93, ../sass/_reset.scss */
+small {
+  font-size: 0.769em;
+  /* 10px */
+}
+
+/* line 95, ../sass/_reset.scss */
+em {
+  font-style: italic;
+}
+
+/* line 97, ../sass/_reset.scss */
+code {
+  background-color: #eee;
+  padding: 0 0.30775em;
+}
+
+/*-------------------------------------------
+    :: Lists - REVIEW THIS CLOSELY (lifted this from our Refactored solution)
+--------------------------------------------*/
+/* line 103, ../sass/_reset.scss */
+li ul, li ol {
+  margin: 0;
+}
+
+/* Custom edit: taken from blueprint reset  */
+/* line 104, ../sass/_reset.scss */
+ol {
+  margin: 0 0 2.462em 0;
+  padding: 0 0 0 2.462em;
+}
+
+/* Custom edit: made similar to blueprint reset */
+/* line 105, ../sass/_reset.scss */
+ul {
+  margin: 0 0 2.462em 0.6155em;
+  padding: 0;
+}
+
+/* Custom edit: made similar to blueprint reset */
+/* Default bullets */
+/* line 107, ../sass/_reset.scss */
+ul li, .snav li ul li ul li {
+  padding: 0 0 0 0.6155em;
+  xbackground: url(/img/sprites/sprite-bullets.png) 0 0.45em no-repeat;
+}
+
+/* line 111, ../sass/_reset.scss */
+ul {
+  list-style: none;
+  list-style-image: none;
+}
+
+/* line 112, ../sass/_reset.scss */
+ol {
+  list-style-type: decimal;
+}
+
+/* line 114, ../sass/_reset.scss */
+dl {
+  margin: 0;
+}
+
+/*Custom edit: taken from blueprint reset - removed, due to media object work */
+/* line 115, ../sass/_reset.scss */
+dt {
+  font-weight: bold;
+}
+
+/*Custom edit: taken from blueprint reset*/
+/* line 116, ../sass/_reset.scss */
+dd {
+  margin: 0;
+  margin-bottom: 2.462em;
+}
+
+/* Horizontal definition list (Term to the left, data to the right)*/
+/* line 118, ../sass/_reset.scss */
+.dl-horz dt, .dl-horz dd {
+  margin: 0 0 2.462em 0;
+}
+
+/* line 119, ../sass/_reset.scss */
+.dl-horz dt {
+  float: left;
+  margin-right: 10px;
+  width: 130px;
+  clear: left;
+  font-weight: bold;
+}
+
+/*-------------------------------------------
+    :: Embedded content
+--------------------------------------------*/
+/**
+ * 1. Remove border when inside `a` element in IE 8/9.
+ * 2. Responsive images
+ * 3. Improves image quality when scaled in IE7: code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+ */
+/* line 131, ../sass/_reset.scss */
+img {
+  border: 0;
+  /* [1] */
+  width: 100%;
+  /* [2] */
+  max-width: 100%;
+  /* [2] */
+  height: auto;
+  /* [2] */
+  -ms-interpolation-mode: bicubic;
+  /* [3] */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+/* line 143, ../sass/_reset.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/*-------------------------------------------
+    :: Forms
+--------------------------------------------*/
+/* ------ Corrects margin displayed oddly in IE6/7 ------ */
+/* line 152, ../sass/_reset.scss */
+form {
+  margin: 0;
+}
+
+/* ------ Define consistent margin and padding ------ */
+/* line 155, ../sass/_reset.scss */
+fieldset {
+  margin: 0 0.154em;
+  padding: 0.35em 0 0.75em;
+}
+
+/* ------ 1. Corrects color not being inherited in IE6/9/8/9  2. Corrects alignment displayed oddly in IE6/7 ------ */
+/* line 158, ../sass/_reset.scss */
+legend {
+  border: 0;
+  /* 1 */
+  *margin-left: -0.538em;
+  /* 2 */
+}
+
+/*
+* 1. Corrects font size not being inherited in all browsers
+* 2. Addresses margins set differently in IE6/7, F3/4, S5, Chrome
+* 3. Improves appearance and consistency in all browsers
+*/
+/* line 168, ../sass/_reset.scss */
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  vertical-align: baseline;
+  /* 3 */
+  *vertical-align: middle;
+  /* 3 */
+}
+
+/* ------ 1. Addresses FF3/4 setting line-height using !important in the UA stylesheet  ------ */
+/* line 172, ../sass/_reset.scss */
+button,
+input {
+  line-height: normal;
+}
+
+/* ------ Corrects overlap and whitespace issue for buttons and inputs in IE6/7 * Known issue: reintroduces inner spacing */
+/* line 176, ../sass/_reset.scss */
+table button,
+table input {
+  *overflow: auto;
+}
+
+/*
+* 1. Improves usability and consistency of cursor style between image-type 'input' and others
+* 2. Corrects inability to style clickable 'input' types in iOS
+* 3. Corrects inner spacing displayed oddly in IE7 without effecting normal text inputs
+*/
+/* line 186, ../sass/_reset.scss */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  /* 1 */
+  -webkit-appearance: button;
+  /* 2 */
+  *overflow: visible;
+  /* 3 */
+}
+
+/*
+* 1. Addresses box sizing set to content-box in IE8/9
+* 2. Addresses excess padding in IE8/9
+*/
+/* line 197, ../sass/_reset.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/*
+* 1. Addresses appearance set to searchfield in S5, Chrome
+* 2. Addresses box sizing set to border-box in S5, Chrome (include -moz to future-proof)
+*/
+/* line 206, ../sass/_reset.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/* Corrects inner padding displayed oddly in S5, Chrome on OSX */
+/* line 214, ../sass/_reset.scss */
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+* Corrects inner padding and border displayed oddly in FF3/4
+* www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+*/
+/* line 223, ../sass/_reset.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/*
+* 1. Removes default vertical scrollbar in IE6/9/8/9
+* 2. Improves readability and alignment in all browsers
+*/
+/* line 232, ../sass/_reset.scss */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+
+/* line 237, ../sass/_reset.scss */
+label {
+  font-weight: bold;
+}
+
+/*-------------------------------------------
+    :: Tables
+--------------------------------------------*/
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 246, ../sass/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  /* ###### TABLE CODE BELOW THIS IS TEMPORARY TEST JUST TO DISPLAY A TABLE WITH BORDERS ##### */
+  background: white;
+  margin: 0 0 1.231em 0;
+  border-left: solid 1px black;
+  border-top: solid 1px black;
+}
+
+/* line 256, ../sass/_reset.scss */
+caption {
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Addition */
+/* line 261, ../sass/_reset.scss */
+th, td {
+  padding: 0.30775em 0.6155em;
+  text-align: left;
+  border-right: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+/*------------------------------------*\
+    $CLEARFIX
+\*------------------------------------*/
+/**
+* Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+* Extend the clearfix class with Sass to avoid the `.cf` class appearing over
+* and over in your markup.
+*/
+/* line 276, ../sass/_reset.scss */
+.cf, .grid__item, .shelf--pad, .pod, .pod--pad, .grid, .grid--full {
+  zoom: 1;
+}
+/* line 277, ../sass/_reset.scss */
+.cf:after, .grid__item:after, .shelf--pad:after, .pod:after, .pod--pad:after, .grid:after, .grid--full:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*------------------------------------*\
+    $GRID SETUP
+\*------------------------------------*/
+/**
+ * 1. Allow the grid system to be used on lists.
+ * 2. Remove any margins and paddings that might affect the grid system.
+ * 3. Apply a negative `margin-left` to negate the columns’ gutters.
+ */
+/* line 11, ../sass/_grid.scss */
+.grid, .grid--full {
+  list-style: none;
+  /* [1] */
+  margin: 0;
+  /* [2] */
+  padding: 0;
+  /* [2] */
+  margin-left: -1.231em;
+  /* [3] */
+}
+
+/**
+ * 1. Cause columns to stack side-by-side.
+ * 2. Space columns apart.
+ * 3. Align columns to the tops of each other.
+ * 4. Full-width unless told to behave otherwise.
+ * 5. Required to combine fluid widths and fixed gutters.
+ */
+/* line 37, ../sass/_grid.scss */
+.grid__item {
+  float: left;
+  /* [1] */
+  /*display:inline-block;            [1] */
+  padding-left: 1.231em;
+  /* [2] */
+  vertical-align: top;
+  /* [3] */
+  width: 100%;
+  /* [4] */
+  -webkit-box-sizing: border-box;
+  /* [5] */
+  -moz-box-sizing: border-box;
+  /* [5] */
+  box-sizing: border-box;
+  /* [5] */
+  *behavior: url(/rocket-booster/js/vendor/boxsizing.htc);
+  /* Move into IE7 css - simulates box-sizing in IE7 */
+}
+
+/**
+ * Gutterless grids have all the properties of regular grids, minus any spacing.
+ */
+/* line 60, ../sass/_grid.scss */
+.grid--full {
+  margin-left: 0;
+}
+/* line 64, ../sass/_grid.scss */
+.grid--full > .grid__item {
+  padding-left: 0;
+}
+
+/*------------------------------------*\
+    $GRID GUTTER ADJUSTMENTS - Neil
+\*------------------------------------*/
+@media only screen and (min-width: 40em) {
+  /* line 75, ../sass/_grid.scss */
+  .grid, .grid--full {
+    margin-left: -2.462em;
+    /* gutter for lap is 16 + 16 = 32px */
+  }
+
+  /* line 79, ../sass/_grid.scss */
+  .grid__item {
+    padding-left: 2.462em;
+    /* gutter for lap is 16 + 16 = 32px */
+  }
+
+  /*------------------------------------*\
+    $GRID MODIFIERS 
+  \*------------------------------------*/
+  /* line 87, ../sass/_grid.scss */
+  .grid--horz-twinkle {
+    margin-left: -0.6155em;
+    /* Use 1/2 mobile gutter dimension 8px for specific items e.g. components such as carousel tiles */
+  }
+
+  /* line 91, ../sass/_grid.scss */
+  .grid--horz-twinkle > .grid__item {
+    padding-left: 0.6155em;
+    /* Affect immediate child grid__items only */
+  }
+
+  /* line 95, ../sass/_grid.scss */
+  .grid--horz-baby {
+    margin-left: -1.231em;
+    /* Use mobile gutter dimension 16px for specific items e.g. components such as sub nav or group of 4 tools link tiles */
+  }
+
+  /* line 99, ../sass/_grid.scss */
+  .grid--horz-baby > .grid__item {
+    padding-left: 1.231em;
+    /* Affect immediate child grid__items only */
+  }
+
+  /* line 103, ../sass/_grid.scss */
+  .grid--horz-mama {
+    margin-left: -2.462em;
+    /* Use lap gutter dimension 32px for specific items e.g. 3 column articles */
+  }
+
+  /* line 107, ../sass/_grid.scss */
+  .grid--horz-mama > .grid__item {
+    padding-left: 2.462em;
+    /* Affect immediate child grid__items only */
+  }
+
+  /**
+   * Gutterless grids have all the properties of regular grids, minus any spacing.
+   */
+  /* line 114, ../sass/_grid.scss */
+  .grid--full {
+    margin-left: 0;
+  }
+  /* line 118, ../sass/_grid.scss */
+  .grid--full > .grid__item {
+    padding-left: 0;
+  }
+}
+@media only screen and (min-width: 59.077em) {
+  /* line 128, ../sass/_grid.scss */
+  .grid, .grid--full {
+    margin-left: -3.693em;
+    /* gutter for desk 16 + 32 = 48px */
+  }
+
+  /* line 132, ../sass/_grid.scss */
+  .grid__item {
+    padding-left: 3.693em;
+    /* gutter for desk 16 + 32 = 48px */
+  }
+
+  /*------------------------------------*\
+    $GRID MODIFIERS 
+  \*------------------------------------*/
+  /* line 140, ../sass/_grid.scss */
+  .grid--horz-twinkle {
+    margin-left: -0.6155em;
+    /* Use 1/2 mobile gutter dimension 8px for specific items e.g. components such as carousel tiles */
+  }
+
+  /* line 144, ../sass/_grid.scss */
+  .grid--horz-twinkle > .grid__item {
+    padding-left: 0.6155em;
+    /* Affect immediate child grid__items only */
+  }
+
+  /* line 148, ../sass/_grid.scss */
+  .grid--horz-baby {
+    margin-left: -1.231em;
+    /* Use mobile gutter dimension 16px for specific items e.g. components such as sub nav or group of 4 tools link tiles */
+  }
+
+  /* line 152, ../sass/_grid.scss */
+  .grid--horz-baby > .grid__item {
+    padding-left: 1.231em;
+    /* Affect immediate child grid__items only */
+  }
+
+  /* line 156, ../sass/_grid.scss */
+  .grid--horz-mama {
+    margin-left: -2.462em;
+    /* Use lap gutter dimension 32px for specific items e.g. 3 column articles */
+  }
+
+  /* line 160, ../sass/_grid.scss */
+  .grid--horz-mama > .grid__item {
+    padding-left: 2.462em;
+    /* Affect immediate child grid__items only */
+  }
+
+  /**
+   * Gutterless grids have all the properties of regular grids, minus any spacing.
+   */
+  /* line 168, ../sass/_grid.scss */
+  .grid--full {
+    margin-left: 0;
+  }
+  /* line 172, ../sass/_grid.scss */
+  .grid--full > .grid__item {
+    padding-left: 0;
+  }
+}
+/*------------------------------------*\
+    $WIDTHS
+\*------------------------------------*/
+/**
+ * Create our width classes, prefixed by the specified namespace.
+ */
+/**
+ * Our regular, non-responsive width classes.
+ */
+/**
+ * Whole
+ */
+/* line 200, ../sass/_grid.scss */
+.one-whole {
+  width: 100%;
+}
+
+/**
+ * Halves
+ */
+/* line 206, ../sass/_grid.scss */
+.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths {
+  width: 50%;
+}
+
+/**
+ * Thirds
+ */
+/* line 212, ../sass/_grid.scss */
+.one-third, .two-sixths, .four-twelfths {
+  width: 33.333%;
+}
+
+/* line 213, ../sass/_grid.scss */
+.two-thirds, .four-sixths, .eight-twelfths {
+  width: 66.666%;
+}
+
+/**
+ * Quarters
+ */
+/* line 219, ../sass/_grid.scss */
+.one-quarter, .two-eighths, .three-twelfths {
+  width: 25%;
+}
+
+/* line 221, ../sass/_grid.scss */
+.three-quarters, .six-eighths, .nine-twelfths {
+  width: 75%;
+}
+
+/**
+ * Fifths
+ */
+/* line 227, ../sass/_grid.scss */
+.one-fifth, .two-tenths {
+  width: 20%;
+}
+
+/* line 228, ../sass/_grid.scss */
+.two-fifths, .four-tenths {
+  width: 40%;
+}
+
+/* line 229, ../sass/_grid.scss */
+.three-fifths, .six-tenths {
+  width: 60%;
+}
+
+/* line 230, ../sass/_grid.scss */
+.four-fifths, .eight-tenths {
+  width: 80%;
+}
+
+/**
+ * Sixths
+ */
+/* line 236, ../sass/_grid.scss */
+.one-sixth, .two-twelfths {
+  width: 16.666%;
+}
+
+/* line 240, ../sass/_grid.scss */
+.five-sixths, .ten-twelfths {
+  width: 83.333%;
+}
+
+/**
+ * Eighths
+ */
+/* line 246, ../sass/_grid.scss */
+.one-eighth {
+  width: 12.5%;
+}
+
+/* line 248, ../sass/_grid.scss */
+.three-eighths {
+  width: 37.5%;
+}
+
+/* line 250, ../sass/_grid.scss */
+.five-eighths {
+  width: 62.5%;
+}
+
+/* line 252, ../sass/_grid.scss */
+.seven-eighths {
+  width: 87.5%;
+}
+
+/**
+ * Tenths
+ */
+/* line 258, ../sass/_grid.scss */
+.one-tenth {
+  width: 10%;
+}
+
+/* line 260, ../sass/_grid.scss */
+.three-tenths {
+  width: 30%;
+}
+
+/* line 264, ../sass/_grid.scss */
+.seven-tenths {
+  width: 70%;
+}
+
+/* line 266, ../sass/_grid.scss */
+.nine-tenths {
+  width: 90%;
+}
+
+/**
+ * Twelfths
+ */
+/* line 272, ../sass/_grid.scss */
+.one-twelfth {
+  width: 8.333%;
+}
+
+/* line 276, ../sass/_grid.scss */
+.five-twelfths {
+  width: 41.666%;
+}
+
+/* line 278, ../sass/_grid.scss */
+.seven-twelfths {
+  width: 58.333%;
+}
+
+/* line 282, ../sass/_grid.scss */
+.eleven-twelfths {
+  width: 91.666%;
+}
+
+/**
+ * Our responsive classes, if we have enabled them.
+ */
+@media only screen and (min-width: 40em) {
+  /**
+   * Whole
+   */
+  /* line 200, ../sass/_grid.scss */
+  .lap--one-whole {
+    width: 100%;
+  }
+
+  /**
+   * Halves
+   */
+  /* line 206, ../sass/_grid.scss */
+  .lap--one-half, .lap--two-quarters, .lap--three-sixths, .lap--four-eighths, .lap--five-tenths, .lap--six-twelfths {
+    width: 50%;
+  }
+
+  /**
+   * Thirds
+   */
+  /* line 212, ../sass/_grid.scss */
+  .lap--one-third, .lap--two-sixths, .lap--four-twelfths {
+    width: 33.333%;
+  }
+
+  /* line 213, ../sass/_grid.scss */
+  .lap--two-thirds, .lap--four-sixths, .lap--eight-twelfths {
+    width: 66.666%;
+  }
+
+  /**
+   * Quarters
+   */
+  /* line 219, ../sass/_grid.scss */
+  .lap--one-quarter, .lap--two-eighths, .lap--three-twelfths {
+    width: 25%;
+  }
+
+  /* line 221, ../sass/_grid.scss */
+  .lap--three-quarters, .lap--six-eighths, .lap--nine-twelfths {
+    width: 75%;
+  }
+
+  /**
+   * Fifths
+   */
+  /* line 227, ../sass/_grid.scss */
+  .lap--one-fifth, .lap--two-tenths {
+    width: 20%;
+  }
+
+  /* line 228, ../sass/_grid.scss */
+  .lap--two-fifths, .lap--four-tenths {
+    width: 40%;
+  }
+
+  /* line 229, ../sass/_grid.scss */
+  .lap--three-fifths, .lap--six-tenths {
+    width: 60%;
+  }
+
+  /* line 230, ../sass/_grid.scss */
+  .lap--four-fifths, .lap--eight-tenths {
+    width: 80%;
+  }
+
+  /**
+   * Sixths
+   */
+  /* line 236, ../sass/_grid.scss */
+  .lap--one-sixth, .lap--two-twelfths {
+    width: 16.666%;
+  }
+
+  /* line 240, ../sass/_grid.scss */
+  .lap--five-sixths, .lap--ten-twelfths {
+    width: 83.333%;
+  }
+
+  /**
+   * Eighths
+   */
+  /* line 246, ../sass/_grid.scss */
+  .lap--one-eighth {
+    width: 12.5%;
+  }
+
+  /* line 248, ../sass/_grid.scss */
+  .lap--three-eighths {
+    width: 37.5%;
+  }
+
+  /* line 250, ../sass/_grid.scss */
+  .lap--five-eighths {
+    width: 62.5%;
+  }
+
+  /* line 252, ../sass/_grid.scss */
+  .lap--seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+   * Tenths
+   */
+  /* line 258, ../sass/_grid.scss */
+  .lap--one-tenth {
+    width: 10%;
+  }
+
+  /* line 260, ../sass/_grid.scss */
+  .lap--three-tenths {
+    width: 30%;
+  }
+
+  /* line 264, ../sass/_grid.scss */
+  .lap--seven-tenths {
+    width: 70%;
+  }
+
+  /* line 266, ../sass/_grid.scss */
+  .lap--nine-tenths {
+    width: 90%;
+  }
+
+  /**
+   * Twelfths
+   */
+  /* line 272, ../sass/_grid.scss */
+  .lap--one-twelfth {
+    width: 8.333%;
+  }
+
+  /* line 276, ../sass/_grid.scss */
+  .lap--five-twelfths {
+    width: 41.666%;
+  }
+
+  /* line 278, ../sass/_grid.scss */
+  .lap--seven-twelfths {
+    width: 58.333%;
+  }
+
+  /* line 282, ../sass/_grid.scss */
+  .lap--eleven-twelfths {
+    width: 91.666%;
+  }
+}
+@media only screen and (min-width: 59.077em) {
+  /**
+   * Whole
+   */
+  /* line 200, ../sass/_grid.scss */
+  .desk--one-whole {
+    width: 100%;
+  }
+
+  /**
+   * Halves
+   */
+  /* line 206, ../sass/_grid.scss */
+  .desk--one-half, .desk--two-quarters, .desk--three-sixths, .desk--four-eighths, .desk--five-tenths, .desk--six-twelfths {
+    width: 50%;
+  }
+
+  /**
+   * Thirds
+   */
+  /* line 212, ../sass/_grid.scss */
+  .desk--one-third, .desk--two-sixths, .desk--four-twelfths {
+    width: 33.333%;
+  }
+
+  /* line 213, ../sass/_grid.scss */
+  .desk--two-thirds, .desk--four-sixths, .desk--eight-twelfths {
+    width: 66.666%;
+  }
+
+  /**
+   * Quarters
+   */
+  /* line 219, ../sass/_grid.scss */
+  .desk--one-quarter, .desk--two-eighths, .desk--three-twelfths {
+    width: 25%;
+  }
+
+  /* line 221, ../sass/_grid.scss */
+  .desk--three-quarters, .desk--six-eighths, .desk--nine-twelfths {
+    width: 75%;
+  }
+
+  /**
+   * Fifths
+   */
+  /* line 227, ../sass/_grid.scss */
+  .desk--one-fifth, .desk--two-tenths {
+    width: 20%;
+  }
+
+  /* line 228, ../sass/_grid.scss */
+  .desk--two-fifths, .desk--four-tenths {
+    width: 40%;
+  }
+
+  /* line 229, ../sass/_grid.scss */
+  .desk--three-fifths, .desk--six-tenths {
+    width: 60%;
+  }
+
+  /* line 230, ../sass/_grid.scss */
+  .desk--four-fifths, .desk--eight-tenths {
+    width: 80%;
+  }
+
+  /**
+   * Sixths
+   */
+  /* line 236, ../sass/_grid.scss */
+  .desk--one-sixth, .desk--two-twelfths {
+    width: 16.666%;
+  }
+
+  /* line 240, ../sass/_grid.scss */
+  .desk--five-sixths, .desk--ten-twelfths {
+    width: 83.333%;
+  }
+
+  /**
+   * Eighths
+   */
+  /* line 246, ../sass/_grid.scss */
+  .desk--one-eighth {
+    width: 12.5%;
+  }
+
+  /* line 248, ../sass/_grid.scss */
+  .desk--three-eighths {
+    width: 37.5%;
+  }
+
+  /* line 250, ../sass/_grid.scss */
+  .desk--five-eighths {
+    width: 62.5%;
+  }
+
+  /* line 252, ../sass/_grid.scss */
+  .desk--seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+   * Tenths
+   */
+  /* line 258, ../sass/_grid.scss */
+  .desk--one-tenth {
+    width: 10%;
+  }
+
+  /* line 260, ../sass/_grid.scss */
+  .desk--three-tenths {
+    width: 30%;
+  }
+
+  /* line 264, ../sass/_grid.scss */
+  .desk--seven-tenths {
+    width: 70%;
+  }
+
+  /* line 266, ../sass/_grid.scss */
+  .desk--nine-tenths {
+    width: 90%;
+  }
+
+  /**
+   * Twelfths
+   */
+  /* line 272, ../sass/_grid.scss */
+  .desk--one-twelfth {
+    width: 8.333%;
+  }
+
+  /* line 276, ../sass/_grid.scss */
+  .desk--five-twelfths {
+    width: 41.666%;
+  }
+
+  /* line 278, ../sass/_grid.scss */
+  .desk--seven-twelfths {
+    width: 58.333%;
+  }
+
+  /* line 282, ../sass/_grid.scss */
+  .desk--eleven-twelfths {
+    width: 91.666%;
+  }
+}
+/*------------------------------------*\
+    $CLEARFIX
+\*------------------------------------*/
+/**
+* Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+* Extend the clearfix class with Sass to avoid the `.cf` class appearing over
+* and over in your markup.
+*/
+/* line 316, ../sass/_grid.scss */
+.cf, .grid__item, .shelf--pad, .pod, .pod--pad, .grid, .grid--full {
+  zoom: 1;
+}
+/* line 317, ../sass/_grid.scss */
+.cf:after, .grid__item:after, .shelf--pad:after, .pod:after, .pod--pad:after, .grid:after, .grid--full:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*------------------------------------*\
+    $CONTENT-BLOCKS
+\*------------------------------------*/
+/**
+ * These form the basis of content-blocks that sit inside the grid__items
+ */
+/* line 332, ../sass/_grid.scss */
+.pod {
+  margin: 0;
+  padding: 0;
+  xposition: relative;
+}
+
+/* line 334, ../sass/_grid.scss */
+.shelf--pad {
+  padding: 1.231em 1.231em 0 1.231em;
+}
+@media only screen and (min-width: 40em) {
+  /* line 334, ../sass/_grid.scss */
+  .shelf--pad {
+    padding: 2.462em 2.462em 0;
+  }
+}
+@media only screen and (min-width: 59.077em) {
+  /* line 334, ../sass/_grid.scss */
+  .shelf--pad {
+    padding: 2.462em 3.693em 0;
+  }
+}
+
+/* line 346, ../sass/_grid.scss */
+.pod--pad {
+  padding: 1.231em 1.231em 0 1.231em;
+  margin-bottom: 1.231em;
+}
+@media only screen and (min-width: 40em) {
+  /* line 346, ../sass/_grid.scss */
+  .pod--pad {
+    margin-bottom: 2.462em;
+  }
+}
+
+/*------------------------------------*\
+    $TYPOGRAPHY
+\*------------------------------------*/
+/**
+ * CONTENTS
+ * @FONT-FACE.................Custom web fonts
+ * HEADINGS...................OOCSS headings
+ */
+@font-face {
+  /* This declaration targets Internet Explorer */
+  font-family: "franklin_gothic_heavy";
+  src: url("/personal-website/assets/fonts/franklin_gothic_heavy.eot");
+}
+
+@font-face {
+  /* This declaration targets everything else */
+  font-family: "franklin_gothic_heavy";
+  src: url("/personal-website/assets/fonts/franklin_gothic_heavy.woff") format("woff"), url("/personal-website/assets/fonts/franklin_gothic_heavy.ttf") format("truetype"), url("/personal-website/assets/fonts/franklin_gothic_heavy.svg#webfontpZmCOfmQ") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 28, ../sass/_typography.scss */
+.brand-font {
+  font-family: "franklin_gothic_heavy";
+}
+
+/*------------------------------------*\
+    $HEADINGS
+\*------------------------------------*/
+/**
+ * An OOCSS method of styling headings so any size can be used on any heading level.
+ * Also location independent.
+ */
+/* line 41, ../sass/_typography.scss */
+.h-xl,
+.h-l,
+.h-xm,
+.h-m,
+.h-s {
+  font-family: "franklin_gothic_heavy";
+  font-weight: normal;
+  letter-spacing: 0;
+  word-spacing: 0;
+  margin: 0;
+  padding-top: 0;
+  line-height: 1;
+}
+
+/**
+ * Margin bottoms may need to be abstracted out into heading modifier classes
+ */
+/* line 55, ../sass/_typography.scss */
+.h-xl {
+  font-size: 26px;
+  font-size: 2em;
+  font-size: 2rem;
+  margin-bottom: 0.61538em;
+}
+
+/* line 61, ../sass/_typography.scss */
+.h-l {
+  font-size: 24px;
+  font-size: 1.846em;
+  font-size: 1.846rem;
+  margin-bottom: 0.76923em;
+}
+
+/* line 62, ../sass/_typography.scss */
+.h-xm {
+  font-size: 22px;
+  font-size: 1.692em;
+  font-size: 1.692rem;
+  margin-bottom: 0.76923em;
+}
+
+/* line 63, ../sass/_typography.scss */
+.h-m {
+  font-size: 18px;
+  font-size: 1.385em;
+  font-size: 1.385rem;
+  margin-bottom: 1.11111em;
+  line-height: 1.231;
+}
+
+/* line 64, ../sass/_typography.scss */
+.h-s {
+  font-size: 15px;
+  font-size: 1.154em;
+  font-size: 1.154rem;
+  margin-bottom: 0.33333em;
+  line-height: 1.231;
+}
+
+/* line 66, ../sass/_typography.scss */
+.hgroup {
+  margin-bottom: 1.231em;
+}
+
+/**
+ * 1. Eek! Descendent selectors... Should be ok though as the ancestor is a class (not an element) 
+ * and it's low-level detail in the tree (leaf node, well twig at least ; )
+ */
+/* line 75, ../sass/_typography.scss */
+.hgroup--type-1 .h-xl,
+.hgroup--type-1 .h-m,
+.hgroup--type-2 .h-l,
+.hgroup--type-2 .h-s {
+  margin-bottom: 0;
+}
+
+/* [1] */
+/* line 77, ../sass/_typography.scss */
+.hgroup--type-2 {
+  border-left: 0.231em solid #333;
+  padding-left: 0.6155em;
+}
+@media only screen and (min-width: 40em) {
+  /* line 77, ../sass/_typography.scss */
+  .hgroup--type-2 {
+    padding-left: 1.231em;
+  }
+}
+
+/* The following scss will eventually be broken up into partials */
+/* line 80, ../sass/style.scss */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+@media only screen and (min-width: 40em) {
+  /* line 80, ../sass/style.scss */
+  .hero {
+    padding-top: 36.885245901639344262295081967213%;
+    /* wrapper with intrinsic ratio, Thierry Koblentz */
+    height: 0;
+  }
+}
+
+@media only screen and (min-width: 40em) {
+  /* line 90, ../sass/style.scss */
+  .hero__feature {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+}
+
+/* line 100, ../sass/style.scss */
+.hero__content {
+  position: relative;
+  margin-top: -2.462em;
+  z-index: 2;
+}
+@media only screen and (min-width: 40em) {
+  /* line 100, ../sass/style.scss */
+  .hero__content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: 0;
+  }
+}
+
+/* line 113, ../sass/style.scss */
+.img--hero {
+  display: block;
+  margin: 0 auto;
+  /* IE8 issue */
+  max-width: none\9;
+}
+
+/* line 119, ../sass/style.scss */
+.img--article {
+  margin-bottom: 1.231em;
+}
+
+/* line 121, ../sass/style.scss */
+.wrapper {
+  margin: 0 auto;
+}
+
+/* line 123, ../sass/style.scss */
+header {
+  width: 100%;
+  background-color: #333;
+  color: white;
+  xborder-bottom: 1px solid #444;
+}
+
+/* line 124, ../sass/style.scss */
+.logo {
+  width: 25px;
+  height: 21px;
+  position: relative;
+  top: .16rem;
+  margin-right: 0.25rem;
+}
+
+/* line 125, ../sass/style.scss */
+header h1 {
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: .5em;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  text-shadow: 1px 2px 0 black;
+}
+
+/*------------------------------------*\
+    $TILES
+\*------------------------------------*/
+/**
+ * 1. Animation was a quick experiment - revisit 
+ */
+/* line 135, ../sass/style.scss */
+.tile--sub-nav,
+.tile--tool-link {
+  min-height: 8.5em;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  /* [1] */
+  display: block;
+  text-decoration: none;
+  vertical-align: bottom;
+}
+
+/*------------------------------------*\
+    $BASE HELPERS 
+\*------------------------------------*/
+/* line 148, ../sass/style.scss */
+.fl {
+  float: left;
+}
+
+/* line 149, ../sass/style.scss */
+.mb--gutter {
+  margin-bottom: 1.231em;
+}
+
+/**
+ * Our breakpoint specific classes.
+ */
+@media only screen and (min-width: 40em) {
+  /* Quick n dirty - Check the animation for performance - can we utilitise GPU with 3D transform? Also need active state */
+  /* line 162, ../sass/style.scss */
+  .tile--sub-nav:hover,
+  .tile--tool-link:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-backface-visibility: hidden;
+    background-color: #0667c4;
+    /* bg color should be moved out not hard-coded */
+  }
+
+  /* line 168, ../sass/style.scss */
+  .h-xl {
+    font-size: 40px;
+    font-size: 3.077em;
+    font-size: 3.077rem;
+    margin-bottom: 0.61538em;
+  }
+
+  /* line 169, ../sass/style.scss */
+  .h-l {
+    font-size: 30px;
+    font-size: 2.308em;
+    font-size: 2.308rem;
+    margin-bottom: 0.61538em;
+  }
+
+  /* line 170, ../sass/style.scss */
+  .h-m {
+    font-size: 21px;
+    font-size: 1.615em;
+    font-size: 1.615rem;
+    margin-bottom: 1.04762em;
+  }
+
+  /* line 171, ../sass/style.scss */
+  .h-s {
+    font-size: 16px;
+    font-size: 1.231em;
+    font-size: 1.231rem;
+    margin-bottom: 0.375em;
+    line-height: 1.231;
+  }
+
+  /* Helpers */
+  /* line 174, ../sass/style.scss */
+  .mb--gutter {
+    margin-bottom: 2.462em;
+  }
+}
+@media only screen and (min-width: 59.077em) {
+  /* line 180, ../sass/style.scss */
+  .wrapper {
+    max-width: 75.077em;
+    /* 976px/13px base-font = 75.077em */
+  }
+
+  /* line 182, ../sass/style.scss */
+  header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    xborder-bottom: 1px solid #444;
+  }
+
+  /* line 183, ../sass/style.scss */
+  .logo {
+    width: 51px;
+    height: 41px;
+    position: relative;
+    top: .30rem;
+    margin-right: 0.25rem;
+  }
+
+  /* line 184, ../sass/style.scss */
+  header h1 {
+    font-size: 2.96rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: .5em;
+    letter-spacing: -2px;
+    line-height: 1.2;
+  }
+
+  /* Margin bottoms may need to be abstracted out into heading modifier classes */
+  /* line 187, ../sass/style.scss */
+  .h-xl {
+    font-size: 50px;
+    font-size: 3.846em;
+    font-size: 3.846rem;
+    margin-bottom: 0.61538em;
+  }
+
+  /* line 188, ../sass/style.scss */
+  .h-l {
+    font-size: 40px;
+    font-size: 3.077em;
+    font-size: 3.077rem;
+    margin-bottom: 0.61538em;
+  }
+
+  /* line 189, ../sass/style.scss */
+  .h-xm {
+    font-size: 30px;
+    font-size: 2.308em;
+    font-size: 2.308rem;
+    margin-bottom: 0.61538em;
+  }
+
+  /* line 190, ../sass/style.scss */
+  .h-m {
+    font-size: 25px;
+    font-size: 1.923em;
+    font-size: 1.923rem;
+    margin-bottom: 1.08em;
+  }
+
+  /* line 191, ../sass/style.scss */
+  .h-s {
+    font-size: 18px;
+    font-size: 1.385em;
+    font-size: 1.385rem;
+    margin-bottom: 0.55556em;
+  }
+
+  /* Helpers */
+}
+/* Helpers */
+/* List Helpers */
+/* line 201, ../sass/style.scss */
+.lower-roman {
+  list-style-type: lower-roman;
+}
+
+/* line 202, ../sass/style.scss */
+.lower-alpha {
+  list-style-type: lower-alpha;
+}
+
+/* Text Helpers */
+/* line 205, ../sass/style.scss */
+.lh--tight {
+  line-height: 1.231;
+}
+
+/* Spacing Helpers */
+/* line 208, ../sass/style.scss */
+.mb--twinkle {
+  margin-bottom: 0.6155em;
+}
+
+/* 8px */
+/* line 209, ../sass/style.scss */
+.mb--baby {
+  margin-bottom: 1.231em;
+}
+
+/* 16px */
+/* line 210, ../sass/style.scss */
+.mb--mama {
+  margin-bottom: 2.462em;
+}
+
+/* 32px */
+/* line 211, ../sass/style.scss */
+.mb--papa {
+  margin-bottom: 3.693em;
+}
+
+/* 32px */
+/* line 214, ../sass/style.scss */
+.mb-0 {
+  margin-bottom: 0;
+}
+
+/* line 216, ../sass/style.scss */
+.ml-0 {
+  margin-left: 0;
+}
+
+/* line 218, ../sass/style.scss */
+.pl-0 {
+  padding-left: 0;
+}
+
+/* Color helpers */
+/* line 222, ../sass/style.scss */
+.bg-p-1 {
+  background-color: #0e1546;
+  color: white;
+}
+
+/* line 223, ../sass/style.scss */
+.bg-p-6 {
+  background-color: #efefff;
+  color: #111111;
+}
+
+/* line 224, ../sass/style.scss */
+.bg-mono-5 {
+  background-color: white;
+  color: #111111;
+}
+
+/* line 226, ../sass/style.scss */
+.txt-mono-4 {
+  color: #fff;
+}

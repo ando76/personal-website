@@ -1,0 +1,44 @@
+/*------------------------------------*\
+    $CUSTOM VARIABLES - NW
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+    $TYPOGRAPHY
+\*------------------------------------*/
+/**
+ * 1. Existing live site has a base font of 13px so sticking with this for now. Browser default (~16px) is another recommended option.
+ * 2. Line-height unit-less as em and percentage values have poor inheritance behaviour 
+ */
+
+$base-font-size:		16px!default; /* [1] */
+$base-line-height:		1.615!default; /* [2] 21px */
+$line-height-tight:		1.231!default; /* [2] 16px e.g. Blurb within sub-nav tiles */
+$line-height-tighter:	1.077!default; /* [2] 14px e.g. headings */
+$line-height-tightest:	1!default; /* [2] 13px e.g. headings */
+$base-font-family:		sans-serif!default;
+$brand-font-file:		"/personal-website/assets/fonts/franklin_gothic_heavy";
+$brand-font:            'franklin_gothic_heavy'!default;
+
+
+$base-spacing-unit:		$gutter!default;
+
+$hgroup-brand-brd-color: "#333";
+
+/*------------------------------------*\
+    $COLOURS - need to work out how these compare with RBS colours - can we have primaries 1, 2, 3 etc - work out naming conventions etc
+\*------------------------------------*/
+
+/* Primary */
+$bg-p-1:                #0e1546!default;
+$bg-p-6:                #efefff!default;
+
+$cyan:					  #0667c4!default;
+$cyan-hover:		  #004976;
+
+
+/* Greyscale */
+$bg-mono-5:				#fff!default;
+
+$txt-dark:              #111!default;
+$txt-white:             #fff!default;

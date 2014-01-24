@@ -12,11 +12,11 @@ description: Digital Consultant, specialist in leading the development of large-
 About me
 ---------------------
 
-I'm a highly experienced and dependable consultant front-end digital designer/developer from the UK. 
+Hi, I'm Neil Anderson and I'm a Consultant Front-end Digital Designer/Developer from the UK. 
 
-I enjoy delivering transformational change in customer experience and visual design for medium-to-large businesses and organisations. 
+I enjoy delivering transformational change in customer experience and visual design for medium-to-large businesses and organisations. I'm a solid advocate of web accessibility and have over a decade of experience in this area. 
 
-I'm also a specialist in helping refactor large, unwieldy HTML/CSS codebases. 
+I'm also a specialist in refactoring and streamlining large, unwieldy HTML/CSS codebases - this gives great boosts in productivity as well as allowing you to scale your digital solutions fast. 
 
 <!---### Header 3-->
 

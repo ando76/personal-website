@@ -1,0 +1,85 @@
+/*------------------------------------*\
+    $TYPOGRAPHY
+\*------------------------------------*/
+/**
+ * CONTENTS
+ * @FONT-FACE.................Custom web fonts
+ * HEADINGS...................OOCSS headings
+ */
+
+
+@font-face {
+    /* This declaration targets Internet Explorer */
+    font-family: $brand-font;
+    src: url('#{$brand-font-file}.eot');
+}
+
+@font-face {
+    /* This declaration targets everything else */
+    font-family: $brand-font;
+    src:    url('#{$brand-font-file}.woff') format('woff'), 
+            url('#{$brand-font-file}.ttf') format('truetype'), 
+            url('#{$brand-font-file}.svg#webfontpZmCOfmQ') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.brand-font {font-family: $brand-font;}
+
+/*------------------------------------*\
+    $HEADINGS
+\*------------------------------------*/
+/**
+ * An OOCSS method of styling headings so any size can be used on any heading level.
+ * Also location independent.
+ */
+.h-xl,
+.h-l,
+.h-xm,
+.h-m,
+.h-s {
+    font-family:$brand-font;
+    font-weight:normal;
+    letter-spacing:0;
+    word-spacing:0;
+    margin:0;
+    padding-top:0;
+    line-height:$line-height-tightest;
+}
+
+
+/**
+ * Margin bottoms may need to be abstracted out into heading modifier classes
+ */
+.h-xl {
+    font-size:26px;
+    font-size:2em;
+    font-size:2rem;
+    margin-bottom:calc-em(8px, 13px);
+}
+.h-l {font-size:24px;font-size:1.846em;font-size:1.846rem;margin-bottom:calc-em(10px, 13px);}
+.h-xm {font-size:22px;font-size:1.692em;font-size:1.692rem;margin-bottom:calc-em(10px, 13px);}
+.h-m {font-size:18px;font-size:1.385em;font-size:1.385rem;margin-bottom:calc-em(20px, 18px);line-height:$line-height-tight;}
+.h-s {font-size:15px;font-size:1.154em;font-size:1.154rem;margin-bottom:calc-em(5px, 15px);line-height:$line-height-tight;}
+
+.hgroup {margin-bottom:$gutter;}
+
+/**
+ * 1. Eek! Descendent selectors... Should be ok though as the ancestor is a class (not an element) 
+ * and it's low-level detail in the tree (leaf node, well twig at least ; )
+ */
+.hgroup--type-1 .h-xl,
+.hgroup--type-1 .h-m,
+.hgroup--type-2 .h-l,
+.hgroup--type-2 .h-s {margin-bottom:0;} /* [1] */
+
+.hgroup--type-2 {
+    border-left: 0.231em solid #{$hgroup-brand-brd-color};
+    padding-left:$gutter/2;
+    @include grid-media-query ('lap') {
+        padding-left:$gutter;
+    }
+}
+
+

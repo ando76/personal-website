@@ -555,14 +555,12 @@ font-style: normal; }
 .mb-1 {margin-bottom: 1rem;}
 .mb-2 {margin-bottom: 2rem;}
 
-@media only screen and (min-width:20em) {
+.fs-xxl {font-size: 3.6rem;letter-spacing: -0.3rem;line-height:1;}
+.fs-xl {}
 
-    .fs-xxl {font-size: 3.6rem;letter-spacing: -0.3rem;line-height:1;}
-    .fs-xl {}
-
-    .ls-tight {letter-spacing: -0.4rem;}
-}
-@media only screen and (min-width: 30em) {
+.ls-tight {letter-spacing: -0.4rem;}
+/* Greater than 770px */
+@media only screen and (min-width: 41.875em) {
     .fs-xxl {font-size: 7rem;letter-spacing: -0.38rem;line-height:1;}
     .fs-xl {}
 

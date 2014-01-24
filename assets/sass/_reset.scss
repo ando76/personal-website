@@ -1,0 +1,284 @@
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+
+/* Need to add in a proper reset / edited normalize */
+
+* {
+    margin: 0;
+    padding: 0;
+    &,
+    &:before,
+    &:after{
+        @include vendor(box-sizing, border-box);
+    }
+    *behavior: url(/rocket-booster/js/vendor/boxsizing.htc); /* Move into IE7 css. An alternative boxsizing polyfill is to use Modernizr & JQuery */
+}
+
+/*-------------------------------------------
+    :: HTML5 display definitions
+--------------------------------------------*/
+
+/* ------ Corrects block display not defined in IE6/9/8/9 & FF3 ------ */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {display: block;}
+
+/* ------ Corrects inline-block display not defined in IE6/9/8/9 & FF3 ------ */
+audio, canvas, video {display: inline-block;*display: inline;*zoom: 1;}
+
+/* ------  Prevents modern browsers from displaying 'audio' without controls ------ */
+/* ------  Addresses styling for 'hidden' attribute not present in IE7/9/9, FF3, S4. Known issue: no IE6 support ------ */
+audio:not([controls]), [hidden] {display: none;}
+
+/*-------------------------------------------
+    :: DEFAULTS
+--------------------------------------------*/
+/**
+* 1. Set default font size and set font family to sans-serif.
+* 2. Keeps page centred in all browsers regardless of content height.
+* 3. Prevent iOS text size adjust after orientation change, without disabling
+* user zoom.
+*/
+html {
+    font-size: $base-font-size;/* 1 */
+    font-family: sans-serif;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%; /* 3 */
+    -ms-text-size-adjust: 100%; /* 3 */
+}
+
+body {
+
+    font: 1em sans-serif;
+    font-family: $base-font-family;
+    line-height:$base-line-height;
+    color:$txt-dark;
+    background:#ededed;
+}
+
+/*-------------------------------------------
+    :: Links
+--------------------------------------------*/
+
+/* ------ Addresses outline displayed oddly in Chrome ------ */
+a:focus {outline: thin dotted;}
+
+/* ------ Improves readability when focused and also mouse hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test ------ */
+a:hover, a:active {outline: 0;}
+
+/*-------------------------------------------
+    :: Typography
+--------------------------------------------*/
+/* ------ Addresses styling not present in IE7/9/9, S5, Chrome ------ */
+abbr[title] {border-bottom: 1px dotted;}
+
+/* ------ Addresses style set to 'bolder' in FF3/4, S4/5, Chrome ------ */
+b, strong, .bold {font-weight: bold;}
+
+/* ------ Prevents sub and sup affecting line-height in all browsers: gist.github.com/413930 ------ */
+sub, sup {font-size: 75%;line-height: 0;position: relative;vertical-align: baseline;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/**
+ * 1. Temporarily set to justify to aid in highlighting the right edge of grid items
+ */
+p {
+    font-size: 16px;
+    font-size: 1em;
+    font-size: 1rem;
+    //text-align: justify; /* [1] */
+    margin-bottom: $gutter * 2; /* 32px */
+}
+
+small {font-size:0.769em;/* 10px */}
+
+em {font-style: italic;}
+
+code {background-color:#eee;padding:0 $gutter/4;}
+
+/*-------------------------------------------
+    :: Lists - REVIEW THIS CLOSELY (lifted this from our Refactored solution)
+--------------------------------------------*/
+
+li ul, li ol {margin:0;} /* Custom edit: taken from blueprint reset  */
+ol {margin:0 0 $gutter*2 0;padding:0 0 0 $gutter*2;} /* Custom edit: made similar to blueprint reset */
+ul {margin:0 0 $gutter*2 $gutter/2;padding:0;} /* Custom edit: made similar to blueprint reset */
+    /* Default bullets */
+    ul li, /* @mega */.snav li ul li ul li {
+        padding: 0 0 0 $gutter/2;
+        xbackground: url(/img/sprites/sprite-bullets.png) 0 0.45em no-repeat;
+    }
+ul {list-style:none;list-style-image:none;}
+ol {list-style-type:decimal;}
+
+dl {margin:0;} /*Custom edit: taken from blueprint reset - removed, due to media object work */
+dt {font-weight:bold;}  /*Custom edit: taken from blueprint reset*/
+dd {margin: 0;margin-bottom:$gutter*2;}
+/* Horizontal definition list (Term to the left, data to the right)*/
+.dl-horz dt, .dl-horz dd {margin: 0 0 $gutter*2 0;}
+.dl-horz dt {float:left; margin-right: 10px;width: 130px;clear: left; font-weight: bold;}
+
+/*-------------------------------------------
+    :: Embedded content
+--------------------------------------------*/
+
+/**
+ * 1. Remove border when inside `a` element in IE 8/9.
+ * 2. Responsive images
+ * 3. Improves image quality when scaled in IE7: code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+ */
+
+img {
+    border: 0; /* [1] */
+    width:100%; /* [2] */
+    max-width:100%; /* [2] */
+    height:auto; /* [2] */
+    -ms-interpolation-mode: bicubic; /* [3] */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/*-------------------------------------------
+    :: Forms
+--------------------------------------------*/
+
+/* ------ Corrects margin displayed oddly in IE6/7 ------ */
+form {margin: 0;}
+
+/* ------ Define consistent margin and padding ------ */
+fieldset {margin: 0 0.154em;padding: 0.35em 0 0.75em;}
+
+/* ------ 1. Corrects color not being inherited in IE6/9/8/9  2. Corrects alignment displayed oddly in IE6/7 ------ */
+legend {border: 0; /* 1 */ *margin-left: -0.538em; /* 2 */}
+
+/*
+* 1. Corrects font size not being inherited in all browsers
+* 2. Addresses margins set differently in IE6/7, F3/4, S5, Chrome
+* 3. Improves appearance and consistency in all browsers
+*/
+button,
+input,
+select,
+textarea {font-size: 100%; /* 1 */margin: 0; /* 2 */vertical-align: baseline; /* 3 */*vertical-align: middle; /* 3 */}
+
+/* ------ 1. Addresses FF3/4 setting line-height using !important in the UA stylesheet  ------ */
+button,
+input {line-height: normal;}
+
+/* ------ Corrects overlap and whitespace issue for buttons and inputs in IE6/7 * Known issue: reintroduces inner spacing */
+table button,
+table input {*overflow: auto;}
+
+/*
+* 1. Improves usability and consistency of cursor style between image-type 'input' and others
+* 2. Corrects inability to style clickable 'input' types in iOS
+* 3. Corrects inner spacing displayed oddly in IE7 without effecting normal text inputs
+*/
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    cursor: pointer; /* 1 */
+    -webkit-appearance: button; /* 2 */
+    *overflow: visible;  /* 3 */
+}
+
+/*
+* 1. Addresses box sizing set to content-box in IE8/9
+* 2. Addresses excess padding in IE8/9
+*/
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+
+/*
+* 1. Addresses appearance set to searchfield in S5, Chrome
+* 2. Addresses box sizing set to border-box in S5, Chrome (include -moz to future-proof)
+*/
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/* Corrects inner padding displayed oddly in S5, Chrome on OSX */
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/*
+* Corrects inner padding and border displayed oddly in FF3/4
+* www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+*/
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/*
+* 1. Removes default vertical scrollbar in IE6/9/8/9
+* 2. Improves readability and alignment in all browsers
+*/
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+label {font-weight:bold;}
+
+/*-------------------------------------------
+    :: Tables
+--------------------------------------------*/
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    /* ###### TABLE CODE BELOW THIS IS TEMPORARY TEST JUST TO DISPLAY A TABLE WITH BORDERS ##### */
+    background: white;
+    margin: 0 0 $gutter 0;
+    border-left: solid 1px black;
+    border-top: solid 1px black;
+}
+    caption {
+        text-align: left;
+        font-weight: bold;
+    }
+    /* Addition */
+    th, td {
+        padding: $gutter/4 $gutter/2;
+        text-align: left;
+        border-right: solid 1px black;
+        border-bottom: solid 1px black;
+    }
+
+/*------------------------------------*\
+    $CLEARFIX
+\*------------------------------------*/
+/**
+* Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+* Extend the clearfix class with Sass to avoid the `.cf` class appearing over
+* and over in your markup.
+*/
+.cf, #{$class-type}grid__item, , .shelf--pad, .pod, .pod--pad, #{$class-type}grid {
+    &:after{
+        content:"";
+        display:table;
+        clear:both;
+
+    }
+    zoom:1;
+}

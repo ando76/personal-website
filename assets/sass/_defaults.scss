@@ -1,0 +1,119 @@
+/*------------------------------------*\
+	$DEFAULTS
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+    $FUNCTIONS
+\*------------------------------------*/
+/**
+ * Neil experiment - calculating pixels to ems
+ */
+@function calc-em($target-px, $context) {
+  @return ($target-px / $context) * 1em;
+}
+
+
+/*------------------------------------*\
+	$FRAMEWORK VARIABLES
+\*------------------------------------*/
+
+/**
+ * If you are building a non-responsive site but would still like to use
+ * csswizardry-grids, set this to ‘false’:
+ */
+$responsive:            true!default;
+
+
+/**
+ * Is this build mobile first? Setting to ‘true’ means that all grids will be
+ * 100% width if you do not apply a more specific class to them.
+ */
+$mobile-first:          true!default;
+
+
+/**
+ * Set the spacing between your grid items.
+ */
+$gutter:                1.231em!default; /* 16px */
+
+
+/**
+ * Would you like Sass’ silent classes, or regular CSS classes?
+ */
+$use-silent-classes:    false!default;
+
+
+/**
+ * Would you like push and pull classes enabled?
+ */
+$push:                  false!default;
+$pull:                  false!default;
+
+
+/**
+ * Using `inline-block` means that the grid items need their whitespace removed
+ * in order for them to work correctly. Set the following to true if you are
+ * going to achieve this by manually removing/commenting out any whitespace in
+ * your HTML yourself.
+ *
+ * Setting this to false invokes a hack which cannot always be guaranteed,
+ * please see the following for more detail:
+ *
+ * github.com/csswizardry/csswizardry-grids/commit/744d4b23c9d2b77d605b5991e54a397df72e0688
+ * github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+ */
+$use-markup-fix:        true!default;
+
+
+/**
+ * Define your breakpoints. The first value is the prefix that shall be used for
+ * your classes (e.g. `.palm-one-half`), the second value is the media query
+ * that the breakpoint fires at.
+ */
+ 
+ /* Experiment... Base font 13px
+ 320px = 24.615em
+ 768px = 59.077em
+ 900px = 69.231em
+ 901px = 69.308em
+
+ 'palm' '(min-width: 24.615em)',
+
+ */
+/* Rather than relating to any device, these breakpoints are set based on where the design begins to look a bit broken */
+$breakpoints: (
+    'lap' '(min-width: 40em)',
+    'desk' '(min-width: 59.077em)'
+    
+)!default;
+
+
+/**
+ * Define which namespaced breakpoints you would like to generate for each of
+ * widths, push and pull. This is handy if you only need pull on, say, desk, or
+ * you only need a new width breakpoint at mobile sizes. It allows you to only
+ * compile as much CSS as you need. All are turned on by default, but you can
+ * add and remove breakpoints at will.
+ *
+ * Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
+ * have been set to ‘true’.
+ */
+$breakpoint-has-widths: ('lap', 'desk');
+$breakpoint-has-push:   ('lap', 'desk');
+$breakpoint-has-pull:   ('lap', 'desk');
+
+
+
+/**
+ * You do not need to edit anything from this line onward; csswizardry-grids is
+ * good to go. Happy griddin’!
+ */
+$class-type:            unquote(".");
+
+@if $use-silent-classes == true{
+    $class-type:        unquote("%");
+}
+
+
+
