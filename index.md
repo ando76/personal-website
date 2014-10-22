@@ -12,7 +12,9 @@ description: Digital Consultant, specialist in leading the development of large-
 About Skinny Digital
 ---------------------
 
-Hi, I'm Neil Anderson, owner of Skinny Digital. Skinny Digital provides Front-end Digital Design and Development consultancy services for medium-to-large businesses and organisations in the UK. 
+Hi, I'm Neil Anderson, owner of Skinny Digital.
+
+Skinny Digital provides Front-end Digital Design and Development consultancy services for medium-to-large businesses and organisations in the UK. 
 
 I have a long history in the industry and enjoy delivering transformational change in customer experience and visual design for clients. I'm a solid advocate of web accessibility and have over a decade of experience in this area. 
 
