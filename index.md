@@ -24,5 +24,5 @@ I'm currently considering new projects for Q2 2015.
 
 <!---### Header 3-->
 
-[Available for hire Q2 2015]({{ site.baseurl }}/contact-me.html)
+<a href="mailto:neil@skinnydigital.co">Available for hire Q2 2015</a>
 
