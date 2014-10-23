@@ -1,4 +1,4 @@
-personal-website
+website
 ================
 
-My personal website
+Skinny Digital's website
